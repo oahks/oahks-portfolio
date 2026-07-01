@@ -67,7 +67,7 @@ export function TestimonialCarousel({ testimonials }: TestimonialCarouselProps) 
               className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
                 i === current
                   ? "w-8 bg-accent"
-                  : "w-2 bg-white/20 hover:bg-white/40"
+                  : "w-2 bg-[var(--dot-inactive)] hover:bg-[var(--dot-inactive-hover)]"
               }`}
               aria-label={`Go to testimonial ${i + 1}`}
             />

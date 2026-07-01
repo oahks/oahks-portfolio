@@ -57,7 +57,7 @@ export function Hero() {
             <div className="relative">
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-accent/30 to-indigo-600/20 blur-2xl" />
               <div className="glass-strong relative overflow-hidden rounded-3xl glow-blue">
-                <div className="flex aspect-square items-center justify-center bg-gradient-to-br from-slate-800 to-slate-900">
+                <div className="flex aspect-square items-center justify-center hero-inner-bg">
                   <div className="text-center">
                     <div className="mx-auto mb-4 flex h-32 w-32 items-center justify-center rounded-full bg-gradient-to-br from-accent to-indigo-600 text-5xl font-bold text-white">
                       AE

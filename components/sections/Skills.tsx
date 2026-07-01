@@ -7,7 +7,7 @@ import { GlassCard } from "@/components/ui/GlassCard";
 
 export function Skills() {
   return (
-    <section id="skills" className="section-padding bg-black/20">
+    <section id="skills" className="section-padding bg-section-alt">
       <div className="container-max">
         <SectionHeader
           label="Skills"

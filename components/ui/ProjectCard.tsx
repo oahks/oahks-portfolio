@@ -31,7 +31,7 @@ export function ProjectCard({ project, onClick, index = 0 }: ProjectCardProps) {
           <div className="absolute left-3 top-3 rounded-lg bg-accent/80 px-2.5 py-1 text-xs font-medium text-white backdrop-blur-sm">
             {project.industry}
           </div>
-          <div className="absolute right-3 top-3 rounded-lg bg-black/50 px-2.5 py-1 text-xs font-medium text-white backdrop-blur-sm">
+          <div className="absolute right-3 top-3 rounded-lg bg-[var(--badge-overlay)] px-2.5 py-1 text-xs font-medium text-white backdrop-blur-sm">
             {project.mediaCount}
           </div>
           <div className="flex h-20 w-20 items-center justify-center rounded-xl bg-white/10 backdrop-blur-sm">
@@ -62,7 +62,7 @@ export function ProjectCard({ project, onClick, index = 0 }: ProjectCardProps) {
             {project.tools.map((tool) => (
               <span
                 key={tool}
-                className="rounded-md bg-white/5 px-2 py-0.5 text-xs text-muted"
+                className="rounded-md bg-tag px-2 py-0.5 text-xs text-muted"
               >
                 {tool}
               </span>

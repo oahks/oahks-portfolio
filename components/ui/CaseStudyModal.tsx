@@ -35,7 +35,7 @@ export function CaseStudyModal({ project, onClose }: CaseStudyModalProps) {
           className="fixed inset-0 z-50 flex items-center justify-center p-4"
           onClick={onClose}
         >
-          <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
+          <div className="absolute inset-0 bg-[var(--overlay)] backdrop-blur-sm" />
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -87,7 +87,7 @@ export function CaseStudyModal({ project, onClose }: CaseStudyModalProps) {
                   {project.caseStudy.tools.map((tool) => (
                     <span
                       key={tool}
-                      className="rounded-md bg-white/5 px-3 py-1 text-sm text-foreground"
+                      className="rounded-md bg-tag px-3 py-1 text-sm text-foreground"
                     >
                       {tool}
                     </span>

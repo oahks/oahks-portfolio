@@ -6,7 +6,7 @@ import { SectionHeader } from "@/components/ui/SectionHeader";
 
 export function Industries() {
   return (
-    <section id="industries" className="section-padding bg-black/20">
+    <section id="industries" className="section-padding bg-section-alt">
       <div className="container-max">
         <SectionHeader
           label="Industries"

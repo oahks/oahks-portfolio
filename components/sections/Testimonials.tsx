@@ -27,7 +27,7 @@ export function Testimonials() {
               Hear it in a client&apos;s own words. A short, unscripted message
               about the systems I built. Press play to watch.
             </p>
-            <div className="mt-4 flex aspect-video w-full items-center justify-center rounded-xl bg-white/5">
+            <div className="mt-4 flex aspect-video w-full items-center justify-center rounded-xl bg-input">
               <span className="text-xs text-muted">Video placeholder</span>
             </div>
           </div>

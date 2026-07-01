@@ -19,7 +19,7 @@ export function Portfolio() {
       : projects.filter((p) => p.category === activeFilter);
 
   return (
-    <section id="portfolio" className="section-padding bg-black/20">
+    <section id="portfolio" className="section-padding bg-section-alt">
       <div className="container-max">
         <SectionHeader
           label="Portfolio"
