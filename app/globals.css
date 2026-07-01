@@ -26,6 +26,10 @@
   --font-heading: var(--font-plus-jakarta);
 }
 
+.font-heading {
+  font-family: var(--font-plus-jakarta), system-ui, sans-serif;
+}
+
 html {
   scroll-behavior: smooth;
 }

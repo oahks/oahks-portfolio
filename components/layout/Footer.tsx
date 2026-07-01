@@ -1,5 +1,10 @@
 import { siteConfig } from "@/lib/site-config";
-import { Linkedin, Facebook, Instagram, ExternalLink } from "lucide-react";
+import { ExternalLink } from "lucide-react";
+import {
+  LinkedInIcon,
+  FacebookIcon,
+  InstagramIcon,
+} from "@/components/ui/SocialIcons";
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -74,7 +79,7 @@ export function Footer() {
               className="text-muted transition-colors hover:text-accent"
               aria-label="LinkedIn"
             >
-              <Linkedin className="h-5 w-5" />
+              <LinkedInIcon className="h-5 w-5" />
             </a>
             <a
               href={siteConfig.social.facebook}
@@ -83,7 +88,7 @@ export function Footer() {
               className="text-muted transition-colors hover:text-accent"
               aria-label="Facebook"
             >
-              <Facebook className="h-5 w-5" />
+              <FacebookIcon className="h-5 w-5" />
             </a>
             <a
               href={siteConfig.social.instagram}
@@ -92,7 +97,7 @@ export function Footer() {
               className="text-muted transition-colors hover:text-accent"
               aria-label="Instagram"
             >
-              <Instagram className="h-5 w-5" />
+              <InstagramIcon className="h-5 w-5" />
             </a>
             <a
               href={siteConfig.social.upwork}
