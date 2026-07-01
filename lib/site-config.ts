@@ -19,7 +19,7 @@ export const siteConfig = {
     upwork: "https://upwork.com/freelancers/~adeyeyeemmanuel",
   },
   stats: {
-    funnels: 50,
+    funnels: 20,
     workflows: 100,
     campaigns: 75,
     platforms: 12,
