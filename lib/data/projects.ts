@@ -127,8 +127,8 @@ const salesPipeImages = [
 ];
 
 const smmImages = [
-  "screencapture-rewc-nikkibalogun-2026-07-04-13_06_19.png",
   "Screenshot 2026-07-04 130216.png",
+  "screencapture-rewc-nikkibalogun-2026-07-04-13_06_19.png",
   "Screenshot 2026-07-04 130413.png",
   "Screenshot 2026-07-04 130442.png",
   "Screenshot 2026-07-04 130511.png",
@@ -186,18 +186,18 @@ export const projects: Project[] = [
     },
   },
   {
-    id: "money-moves-live",
-    title: "Money Moves Live — Full GHL Build",
+    id: "monthly-webinar-funnel",
+    title: "Monthly Webinar Funnel — Full GHL Build",
     category: "crm",
     industry: "Coaching & Events",
     mediaCount: "16 shots",
     result: "→ Complete CRM · funnels · automations deployed",
-    tools: ["GHL", "Stripe", "Calendars"],
+    tools: ["GHL", "Stripe", "Calendly"],
     coverImage: publicImagePath("mml", mmlImages[0]),
     images: mapImages("mml", mmlImages),
     caseStudy: {
       challenge:
-        "Money Moves Live required a full GoHighLevel ecosystem — website, CRM, booking, and automations — to manage event registrations and client relationships at scale.",
+        "Monthly Webinar required a full GoHighLevel ecosystem — website, CRM, booking, and automations — to manage event registrations and client relationships at scale.",
       solution:
         "Architected and implemented a complete GHL build including CRM setup, pipelines, calendar booking, email/SMS automations, and event registration workflows.",
       tools: ["GoHighLevel", "Stripe", "Google Calendar"],

@@ -32,7 +32,6 @@ const highlights = [
   "3+ years building GoHighLevel CRM systems and sales funnels",
   "100+ automation workflows deployed across multiple industries",
   "Expert in email/SMS marketing, social media, and video content",
-  "Certified in Zapier, Make.com, and AI chatbot integrations",
   "Helped businesses across the world scale operations",
 ];
 

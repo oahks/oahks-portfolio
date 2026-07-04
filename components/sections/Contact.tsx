@@ -1,14 +1,7 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
-import {
-  Mail,
-  Phone,
-  ExternalLink,
-  Send,
-  CheckCircle,
-} from "lucide-react";
+import { Mail, Phone, ExternalLink } from "lucide-react";
 import {
   LinkedInIcon,
   FacebookIcon,
@@ -16,23 +9,9 @@ import {
 } from "@/components/ui/SocialIcons";
 import { siteConfig } from "@/lib/site-config";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { Button } from "@/components/ui/Button";
 import { CalendlyInlineEmbed } from "@/components/ui/CalendlyInlineEmbed";
 
 export function Contact() {
-  const [submitted, setSubmitted] = useState(false);
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    message: "",
-  });
-
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    setSubmitted(true);
-  };
-
   return (
     <section id="contact" className="section-padding bg-section-alt">
       <div className="container-max">
@@ -50,88 +29,28 @@ export function Contact() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.5 }}
           >
-            {submitted ? (
-              <div className="glass flex flex-col items-center justify-center rounded-2xl p-12 text-center">
-                <CheckCircle className="mb-4 h-12 w-12 text-success" />
-                <h3 className="font-heading text-xl font-semibold text-foreground">
-                  Message Sent!
+            <div className="glass overflow-hidden rounded-2xl">
+              <div className="border-b border-border p-4 sm:p-6">
+                <h3 className="font-heading text-lg font-semibold text-foreground">
+                  Book a Discovery Call
                 </h3>
-                <p className="mt-2 text-muted">
-                  Thank you for reaching out. I&apos;ll get back to you within 24
-                  hours.
+                <p className="mt-1 text-sm text-muted">
+                  30 min · No commitment · {siteConfig.location} (WAT)
                 </p>
               </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="glass space-y-4 rounded-2xl p-6 sm:p-8">
-                <div>
-                  <label htmlFor="name" className="mb-1.5 block text-sm font-medium text-foreground">
-                    Name
-                  </label>
-                  <input
-                    id="name"
-                    type="text"
-                    required
-                    value={formData.name}
-                    onChange={(e) =>
-                      setFormData({ ...formData, name: e.target.value })
-                    }
-                    className="w-full rounded-xl border border-border bg-input px-4 py-3 text-sm text-foreground placeholder:text-muted/50 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
-                    placeholder="Your name"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="mb-1.5 block text-sm font-medium text-foreground">
-                    Email
-                  </label>
-                  <input
-                    id="email"
-                    type="email"
-                    required
-                    value={formData.email}
-                    onChange={(e) =>
-                      setFormData({ ...formData, email: e.target.value })
-                    }
-                    className="w-full rounded-xl border border-border bg-input px-4 py-3 text-sm text-foreground placeholder:text-muted/50 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
-                    placeholder="you@company.com"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="phone" className="mb-1.5 block text-sm font-medium text-foreground">
-                    Phone
-                  </label>
-                  <input
-                    id="phone"
-                    type="tel"
-                    value={formData.phone}
-                    onChange={(e) =>
-                      setFormData({ ...formData, phone: e.target.value })
-                    }
-                    className="w-full rounded-xl border border-border bg-input px-4 py-3 text-sm text-foreground placeholder:text-muted/50 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
-                    placeholder="+234 ..."
-                  />
-                </div>
-                <div>
-                  <label htmlFor="message" className="mb-1.5 block text-sm font-medium text-foreground">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    required
-                    rows={4}
-                    value={formData.message}
-                    onChange={(e) =>
-                      setFormData({ ...formData, message: e.target.value })
-                    }
-                    className="w-full resize-none rounded-xl border border-border bg-input px-4 py-3 text-sm text-foreground placeholder:text-muted/50 focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent"
-                    placeholder="Tell me about your project..."
-                  />
-                </div>
-                <Button type="submit" className="w-full">
-                  <Send className="h-4 w-4" />
-                  Send Message
-                </Button>
-              </form>
-            )}
+              <div className="overflow-hidden bg-input">
+                <CalendlyInlineEmbed />
+              </div>
+            </div>
+
+            {/*
+            Contact form — re-enable when backend (Formspree / GHL) is connected
+
+            <form onSubmit={handleSubmit} className="glass space-y-4 rounded-2xl p-6 sm:p-8">
+              ... name, email, phone, message fields ...
+              <Button type="submit" className="w-full">Send Message</Button>
+            </form>
+            */}
           </motion.div>
 
           <motion.div
@@ -139,13 +58,16 @@ export function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.5 }}
-            className="space-y-6"
           >
-            <div className="glass rounded-2xl p-6">
+            <div className="glass rounded-2xl p-6 sm:p-8">
               <h3 className="font-heading text-lg font-semibold text-foreground">
                 Direct Contact
               </h3>
-              <ul className="mt-4 space-y-3">
+              <p className="mt-2 text-sm text-muted">
+                Prefer email or a quick message? Reach out directly or connect on
+                social.
+              </p>
+              <ul className="mt-6 space-y-3">
                 <li>
                   <a
                     href={`mailto:${siteConfig.email}`}
@@ -166,7 +88,7 @@ export function Contact() {
                 </li>
               </ul>
 
-              <div className="mt-6 flex gap-3">
+              <div className="mt-8 flex gap-3">
                 <a
                   href={siteConfig.social.linkedin}
                   target="_blank"
@@ -203,20 +125,6 @@ export function Contact() {
                 >
                   <ExternalLink className="h-5 w-5" />
                 </a>
-              </div>
-            </div>
-
-            <div className="glass overflow-hidden rounded-2xl">
-              <div className="border-b border-border p-4">
-                <h3 className="font-heading font-semibold text-foreground">
-                  Book a Discovery Call
-                </h3>
-                <p className="mt-1 text-sm text-muted">
-                  30 min · No commitment · {siteConfig.location} (WAT)
-                </p>
-              </div>
-              <div className="overflow-hidden bg-input">
-                <CalendlyInlineEmbed />
               </div>
             </div>
           </motion.div>

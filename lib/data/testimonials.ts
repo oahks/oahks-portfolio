@@ -11,7 +11,7 @@ export const testimonials: Testimonial[] = [
     id: "1",
     quote:
       "Adeyeye transformed our entire lead follow-up process in GoHighLevel. Leads get nurtured automatically now, and nothing slips through the cracks. Easily the best automation specialist we've worked with.",
-    name: "Sarah Okonkwo",
+    name: "Sarah Ava",
     role: "Real Estate Agency Owner",
     rating: 5,
   },
@@ -34,9 +34,9 @@ export const testimonials: Testimonial[] = [
   {
     id: "4",
     quote:
-      "The AI chatbot Emmanuel built for our insurance agency handles inquiries 24/7 and books appointments while we sleep. Our response rate went from 30% to 65%. Game changer.",
-    name: "Michael Adeyemi",
-    role: "Insurance Agency Director",
+      "He edited my video to stop scrolling contents and I was able to gain more traction on my instagram page",
+    name: "Michael Arthur",
+    role: "Podcast Host",
     rating: 5,
   },
 ];
