@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, Calendar } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
@@ -57,11 +58,16 @@ export function Hero() {
             <div className="relative">
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-accent/30 to-indigo-600/20 blur-2xl" />
               <div className="glass-strong relative overflow-hidden rounded-3xl glow-blue">
-                <div className="flex aspect-square items-center justify-center hero-inner-bg">
-                  <div className="text-center">
-                    <div className="mx-auto mb-4 flex h-32 w-32 items-center justify-center rounded-full bg-gradient-to-br from-accent to-indigo-600 text-5xl font-bold text-white">
-                      AE
-                    </div>
+                <div className="relative aspect-square">
+                  <Image
+                    src={siteConfig.heroImage}
+                    alt={`${siteConfig.name} — ${siteConfig.title}`}
+                    fill
+                    priority
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover object-top"
+                  />
+                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent p-6 pt-16">
                     <p className="font-heading text-xl font-semibold text-foreground">
                       {siteConfig.name}
                     </p>

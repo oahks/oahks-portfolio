@@ -12,6 +12,7 @@ export const siteConfig = {
   whatsapp: "https://wa.me/2348000000000",
   calendly: "https://calendly.com/adeyeye-emmanuel/discovery",
   location: "Nigeria",
+  heroImage: "/hero-image.jpg",
   social: {
     linkedin: "https://linkedin.com/in/adeyeye-emmanuel",
     facebook: "https://facebook.com/adeyeye.emmanuel",
