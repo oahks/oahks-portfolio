@@ -6,15 +6,15 @@ Built with a dark SaaS-inspired design, glassmorphism effects, scroll animations
 
 ## Features
 
-- **Hero** — Headline, CTAs, profile placeholder, animated stats
+- **Hero** — Headline, CTAs, profile image, animated stats
 - **About** — Summary, mission, core values, career highlights
 - **Skills** — Categorized skill cards
 - **Services** — Six service cards with deliverables and outcomes
-- **Portfolio** — Filterable project grid with case-study modals
+- **Portfolio** — Filterable project grid, case-study modals, image lightbox, promo videos
 - **Process** — Four-step workflow timeline
 - **Industries** — Industries served grid
-- **Testimonials** — Auto-advancing carousel
-- **Contact** — Lead form, social links, Calendly placeholder
+- **Testimonials** — Auto-advancing carousel + video modal
+- **Contact** — Calendly embed, direct contact info, social links (form ready to wire up)
 - **Light & dark mode** — Theme toggle in the navbar (persists via localStorage)
 - **Sticky glass navigation** with solid mobile menu panel
 - **Floating WhatsApp button**
@@ -27,7 +27,7 @@ Built with a dark SaaS-inspired design, glassmorphism effects, scroll animations
 | Framework | [Next.js 16](https://nextjs.org) (App Router) |
 | Styling | [Tailwind CSS v4](https://tailwindcss.com) |
 | Animation | [Framer Motion](https://www.framer.com/motion/) |
-| Theming | [next-themes](https://github.com/pacocoursey/next-themes) |
+| Theming | Custom `ThemeProvider` + blocking script in `app/layout.tsx` |
 | Icons | [Lucide React](https://lucide.dev) |
 | Fonts | Inter + Plus Jakarta Sans (Google Fonts) |
 
@@ -62,6 +62,7 @@ Most copy and links live in data files — update these without touching compone
 |----------------|------|
 | Name, contact, Calendly, WhatsApp, stats, nav | [`lib/site-config.ts`](lib/site-config.ts) |
 | Projects & case studies | [`lib/data/projects.ts`](lib/data/projects.ts) |
+| Promotional videos (Google Drive) | [`lib/data/promotional-videos.ts`](lib/data/promotional-videos.ts) |
 | Services | [`lib/data/services.ts`](lib/data/services.ts) |
 | Skills | [`lib/data/skills.ts`](lib/data/skills.ts) |
 | Testimonials | [`lib/data/testimonials.ts`](lib/data/testimonials.ts) |
@@ -71,19 +72,19 @@ Most copy and links live in data files — update these without touching compone
 
 ### Profile photo
 
-Replace the initials placeholder in [`components/sections/Hero.tsx`](components/sections/Hero.tsx) with a `next/image` component pointing to your photo in `public/images/`.
+Replace [`public/hero-image.jpg`](public/hero-image.jpg) and update `heroImage` in `lib/site-config.ts` if the path changes.
 
-### Project screenshots
+### Project screenshots & videos
 
-Add images to `public/images/projects/` and reference them in `lib/data/projects.ts`.
+Add assets under `public/` (e.g. `buyers/`, `investors/`, `mml/`, `chatbot/`, `sales-pipe-auto/`, `smm/`) and reference paths in `lib/data/projects.ts`. Use lowercase folder names — Linux/Vercel builds are case-sensitive.
 
 ### Contact form
 
-The form currently shows a success state on submit. Wire it to [Formspree](https://formspree.io), a GoHighLevel form embed, or your own API in [`components/sections/Contact.tsx`](components/sections/Contact.tsx).
+The form is commented out in [`components/sections/Contact.tsx`](components/sections/Contact.tsx). Uncomment and wire it to [Formspree](https://formspree.io), a GoHighLevel form embed, or your own API when ready.
 
 ### Calendly
 
-Update the URL in `lib/site-config.ts`, then replace the placeholder block in `Contact.tsx` with a Calendly inline embed iframe.
+Update the URL in `lib/site-config.ts`. The inline embed is already wired in `Contact.tsx` via `CalendlyInlineEmbed`.
 
 ## Project Structure
 
@@ -100,8 +101,12 @@ oahks-portfolio/
 │   └── ui/                 # Button, GlassCard, ThemeToggle, etc.
 ├── lib/
 │   ├── site-config.ts      # Central site configuration
+│   ├── theme-script.ts     # Theme flash-prevention script
+│   ├── utils/media-path.ts # Public asset path helpers
 │   └── data/               # Content data files
 └── public/
+    ├── hero-image.jpg      # Hero profile photo
+    ├── buyers/             # Project screenshots (lowercase paths)
     └── og-image.svg        # Open Graph preview image
 ```
 
@@ -111,7 +116,7 @@ oahks-portfolio/
 2. Import the project at [vercel.com](https://vercel.com)
 3. Deploy — no extra configuration required
 
-Update `metadataBase` in `app/layout.tsx` when your production domain is ready.
+Update `metadataBase` in `app/layout.tsx` if your production domain changes from `adeyeyeemmanuel.com`.
 
 ## Scripts
 
