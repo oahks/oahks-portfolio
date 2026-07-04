@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     "CRM Automation",
     "Sales Funnel Builder",
     "Marketing Automation",
-    "Nigeria",
+    "Remote",
     "Lead Generation",
   ],
 };

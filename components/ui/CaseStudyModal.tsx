@@ -1,10 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { X } from "lucide-react";
+import { X, ZoomIn } from "lucide-react";
 import type { Project } from "@/lib/data/projects";
+import { ProjectVideoPlayer } from "@/components/ui/ProjectVideoPlayer";
+import { ImageLightbox } from "@/components/ui/ImageLightbox";
+import { cn } from "@/lib/utils";
 
 type CaseStudyModalProps = {
   project: Project | null;
@@ -12,25 +15,37 @@ type CaseStudyModalProps = {
 };
 
 export function CaseStudyModal({ project, onClose }: CaseStudyModalProps) {
-  const [activeImage, setActiveImage] = useState<string | null>(null);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const lightboxOpenRef = useRef(false);
+  const isVideoProject = project?.videos !== undefined;
+  const images = project?.images ?? [];
 
   useEffect(() => {
+    lightboxOpenRef.current = lightboxIndex !== null;
+  }, [lightboxIndex]);
+
+  useEffect(() => {
+    setLightboxIndex(null);
+  }, [project?.id]);
+
+  useEffect(() => {
+    if (!project) return;
+
     const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        if (activeImage) setActiveImage(null);
-        else onClose();
-      }
+      if (e.key === "Escape" && !lightboxOpenRef.current) onClose();
     };
-    if (project) {
-      document.addEventListener("keydown", handleEscape);
-      document.body.style.overflow = "hidden";
-      setActiveImage(null);
-    }
+
+    document.addEventListener("keydown", handleEscape);
+    document.body.style.overflow = "hidden";
+
     return () => {
       document.removeEventListener("keydown", handleEscape);
       document.body.style.overflow = "";
     };
-  }, [project, onClose, activeImage]);
+  }, [project, onClose]);
+
+  const openLightbox = (index: number) => setLightboxIndex(index);
+  const closeLightbox = () => setLightboxIndex(null);
 
   return (
     <AnimatePresence>
@@ -69,29 +84,85 @@ export function CaseStudyModal({ project, onClose }: CaseStudyModalProps) {
               {project.result}
             </p>
 
-            <div className="mt-6">
-              <h4 className="text-sm font-semibold uppercase tracking-wider text-accent">
-                Project Screenshots ({project.images.length})
-              </h4>
-              <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3">
-                {project.images.map((src, i) => (
-                  <button
-                    key={src}
-                    type="button"
-                    onClick={() => setActiveImage(src)}
-                    className="relative aspect-video overflow-hidden rounded-xl border border-border bg-section-alt cursor-pointer transition-all hover:border-accent/40 hover:ring-2 hover:ring-accent/20"
-                  >
-                    <Image
-                      src={src}
-                      alt={`${project.title} screenshot ${i + 1}`}
-                      fill
-                      sizes="(max-width: 768px) 50vw, 200px"
-                      className="object-cover object-top"
-                    />
-                  </button>
-                ))}
+            {isVideoProject && (
+              <div className="mt-6 space-y-6">
+                <h4 className="text-sm font-semibold uppercase tracking-wider text-accent">
+                  Videos ({project.videos!.length})
+                </h4>
+                {project.videos!.length === 0 ? (
+                  <div className="rounded-xl border border-dashed border-border bg-section-alt p-8 text-center text-sm text-muted">
+                    <p className="font-medium text-foreground">
+                      No videos added yet
+                    </p>
+                    <p className="mt-2">
+                      Add entries in{" "}
+                      <code className="rounded bg-tag px-1.5 py-0.5 text-xs">
+                        lib/data/promotional-videos.ts
+                      </code>
+                    </p>
+                  </div>
+                ) : (
+                  project.videos!.map((video) => (
+                    <div key={video.id}>
+                      <p className="mb-2 text-sm font-medium text-foreground">
+                        {video.title}
+                        {video.source === "google-drive" && (
+                          <span className="ml-2 text-xs font-normal text-muted">
+                            Google Drive
+                          </span>
+                        )}
+                      </p>
+                      <ProjectVideoPlayer video={video} />
+                    </div>
+                  ))
+                )}
               </div>
-            </div>
+            )}
+
+            {images.length > 0 && (
+              <div className="mt-6">
+                <div className="flex items-center justify-between gap-4">
+                  <h4 className="text-sm font-semibold uppercase tracking-wider text-accent">
+                    Project Screenshots ({images.length})
+                  </h4>
+                  <p className="text-xs text-muted hidden sm:block">
+                    Click to open gallery · Arrow keys to navigate
+                  </p>
+                </div>
+                <div className="mt-3 grid grid-cols-2 gap-3 sm:grid-cols-3">
+                  {images.map((src, i) => (
+                    <button
+                      key={src}
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        openLightbox(i);
+                      }}
+                      className={cn(
+                        "group relative aspect-video overflow-hidden rounded-xl border bg-section-alt cursor-pointer transition-all",
+                        lightboxIndex === i
+                          ? "border-accent ring-2 ring-accent/30"
+                          : "border-border hover:border-accent/40 hover:ring-2 hover:ring-accent/20"
+                      )}
+                    >
+                      <Image
+                        src={src}
+                        alt={`${project.title} screenshot ${i + 1}`}
+                        fill
+                        sizes="(max-width: 768px) 50vw, 200px"
+                        className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all group-hover:bg-black/30 group-hover:opacity-100">
+                        <ZoomIn className="h-8 w-8 text-white drop-shadow-lg" />
+                      </div>
+                      <span className="absolute bottom-2 right-2 rounded-md bg-black/60 px-1.5 py-0.5 text-[10px] font-medium text-white">
+                        {i + 1}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
 
             <div className="mt-6 space-y-5">
               <div>
@@ -144,40 +215,15 @@ export function CaseStudyModal({ project, onClose }: CaseStudyModalProps) {
             </div>
           </motion.div>
 
-          <AnimatePresence>
-            {activeImage && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="absolute inset-0 z-[60] flex items-center justify-center p-4"
-                onClick={() => setActiveImage(null)}
-              >
-                <div className="absolute inset-0 bg-black/90" />
-                <button
-                  onClick={() => setActiveImage(null)}
-                  className="absolute right-6 top-6 z-10 rounded-lg p-2 text-white/80 hover:text-white cursor-pointer"
-                  aria-label="Close image preview"
-                >
-                  <X className="h-6 w-6" />
-                </button>
-                <motion.div
-                  initial={{ scale: 0.9 }}
-                  animate={{ scale: 1 }}
-                  exit={{ scale: 0.9 }}
-                  className="relative max-h-[85vh] w-full max-w-5xl"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={activeImage}
-                    alt="Screenshot preview"
-                    className="max-h-[85vh] w-full rounded-lg object-contain"
-                  />
-                </motion.div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+          {lightboxIndex !== null && (
+            <ImageLightbox
+              images={images}
+              activeIndex={lightboxIndex}
+              onClose={closeLightbox}
+              onIndexChange={setLightboxIndex}
+              title={project.title}
+            />
+          )}
         </motion.div>
       )}
     </AnimatePresence>

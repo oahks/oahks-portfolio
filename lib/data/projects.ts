@@ -1,4 +1,10 @@
-import { publicImagePath } from "@/lib/utils/image-path";
+import { publicImagePath } from "@/lib/utils/media-path";
+import {
+  promotionalVideos,
+  type ProjectVideo,
+} from "@/lib/data/promotional-videos";
+
+export type { ProjectVideo };
 
 export type ProjectCategory =
   | "automation"
@@ -16,8 +22,9 @@ export type Project = {
   mediaCount: string;
   result: string;
   tools: string[];
-  coverImage: string;
-  images: string[];
+  coverImage?: string;
+  images?: string[];
+  videos?: ProjectVideo[];
   caseStudy: {
     challenge: string;
     solution: string;
@@ -79,6 +86,7 @@ const investorsImages = [
 ];
 
 const mmlImages = [
+  "cover.png",
   "screencapture-moneymoves-live-2026-07-04-12_00_14.png",
   "Screenshot 2026-07-04 115510.png",
   "Screenshot 2026-07-04 115521.png",
@@ -266,6 +274,28 @@ export const projects: Project[] = [
         "Consistent content schedule across platforms",
         "Professional branded social assets delivered",
         "Improved audience engagement and visibility",
+      ],
+    },
+  },
+  {
+    id: "promotional-video",
+    title: "Promotional Video Editing",
+    category: "video",
+    industry: "Marketing & Brand",
+    mediaCount: `${Math.max(promotionalVideos.length, 0)} videos`,
+    result: "→ Scroll-stopping promos · reels · brand content",
+    tools: ["Premiere Pro", "CapCut", "Canva"],
+    videos: promotionalVideos,
+    caseStudy: {
+      challenge:
+        "Clients needed high-quality promotional and short-form video content to drive engagement, explain offers, and strengthen brand presence across social platforms.",
+      solution:
+        "Produced promotional videos, reels, and brand content with professional editing, motion graphics, and platform-optimized formats — hosted locally or via Google Drive for easy client review.",
+      tools: ["Adobe Premiere Pro", "CapCut", "Canva", "After Effects"],
+      results: [
+        "Professional promo videos ready for ads and social",
+        "Short-form reels optimized for Instagram & TikTok",
+        "Consistent brand visuals across video content",
       ],
     },
   },

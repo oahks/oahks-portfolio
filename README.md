@@ -1,6 +1,6 @@
 # Adeyeye Emmanuel — Portfolio
 
-A premium, conversion-focused personal portfolio for **Adeyeye Emmanuel**, a Nigeria-based GoHighLevel Automation Specialist, Sales Funnel Builder, CRM Consultant, Social Media Manager, and Video Editor.
+A premium, conversion-focused personal portfolio for **Adeyeye Emmanuel**, a GoHighLevel Automation Specialist, Sales Funnel Builder, CRM Consultant, Social Media Manager, and Video Editor.
 
 Built with a dark SaaS-inspired design, glassmorphism effects, scroll animations, and a filterable project showcase.
 

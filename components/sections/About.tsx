@@ -33,7 +33,7 @@ const highlights = [
   "100+ automation workflows deployed across multiple industries",
   "Expert in email/SMS marketing, social media, and video content",
   "Certified in Zapier, Make.com, and AI chatbot integrations",
-  "Helped businesses across Nigeria and internationally scale operations",
+  "Helped businesses across the world scale operations",
 ];
 
 export function About() {

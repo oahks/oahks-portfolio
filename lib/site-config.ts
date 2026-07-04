@@ -6,18 +6,19 @@ export const siteConfig = {
   headline:
     "Helping Businesses Automate Growth, Generate Leads, and Scale Revenue",
   description:
-    "Nigeria-based GHL expert helping businesses automate operations, generate leads, and scale revenue through CRM automation, funnels, and marketing systems.",
+    "GoHighLevel Expert helping businesses automate operations, generate leads,  and scale revenue through CRM automation, funnels, and marketing systems.",
   email: "hello@adeyeyeemmanuel.com",
   phone: "+234 800 000 0000",
-  whatsapp: "https://wa.me/2348000000000",
-  calendly: "https://calendly.com/adeyeye-emmanuel/discovery",
-  location: "Nigeria",
+  whatsapp: "https://wa.me/2348143748235",
+  calendly: "https://calendly.com/aemmanuel0002/30min",
+  location: "Remote",
   heroImage: "/hero-image.jpg",
   social: {
-    linkedin: "https://linkedin.com/in/adeyeye-emmanuel",
-    facebook: "https://facebook.com/adeyeye.emmanuel",
-    instagram: "https://instagram.com/adeyeye.emmanuel",
-    upwork: "https://upwork.com/freelancers/~adeyeyeemmanuel",
+    linkedin: "https://www.linkedin.com/in/emmanuel-adeyeye-06a13b211",
+    facebook: "https://www.facebook.com/profile.php?id=61588219356979",
+    instagram: "https://www.instagram.com/editandautomate/",
+    upwork:
+      "https://www.upwork.com/freelancers/~011dac7f71625f4da2?mp_source=share",
   },
   stats: {
     funnels: 20,

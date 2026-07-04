@@ -17,6 +17,7 @@ import {
 import { siteConfig } from "@/lib/site-config";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Button } from "@/components/ui/Button";
+import { CalendlyInlineEmbed } from "@/components/ui/CalendlyInlineEmbed";
 
 export function Contact() {
   const [submitted, setSubmitted] = useState(false);
@@ -214,15 +215,8 @@ export function Contact() {
                   30 min · No commitment · {siteConfig.location} (WAT)
                 </p>
               </div>
-              <div className="flex h-96 items-center justify-center bg-input p-4">
-                <div className="text-center">
-                  <p className="text-sm text-muted">
-                    Calendly embed placeholder
-                  </p>
-                  <Button href={siteConfig.calendly} className="mt-4">
-                    Open Calendly
-                  </Button>
-                </div>
+              <div className="overflow-hidden bg-input">
+                <CalendlyInlineEmbed />
               </div>
             </div>
           </motion.div>
