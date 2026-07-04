@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { Play } from "lucide-react";
 import type { Project } from "@/lib/data/projects";
+import { LazyInViewImage } from "@/components/ui/OptimizedImage";
 import { cn } from "@/lib/utils";
 
 type ProjectCardProps = {
@@ -29,11 +29,13 @@ export function ProjectCard({ project, onClick, index = 0 }: ProjectCardProps) {
       <div className="glass overflow-hidden rounded-2xl transition-all duration-300 group-hover:border-accent/30 group-hover:shadow-lg group-hover:shadow-accent/10">
         <div className="relative h-48 overflow-hidden bg-section-alt">
           {project.coverImage ? (
-            <Image
+            <LazyInViewImage
+              variant="card"
               src={project.coverImage}
               alt={project.title}
               fill
               sizes="(max-width: 768px) 100vw, 33vw"
+              containerClassName="absolute inset-0"
               className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
             />
           ) : isVideoProject ? (
@@ -48,10 +50,10 @@ export function ProjectCard({ project, onClick, index = 0 }: ProjectCardProps) {
             </div>
           )}
 
-          <div className="absolute left-3 top-3 rounded-lg bg-accent/90 px-2.5 py-1 text-xs font-medium text-white backdrop-blur-sm">
+          <div className="absolute left-3 top-3 z-10 rounded-lg bg-accent/90 px-2.5 py-1 text-xs font-medium text-white backdrop-blur-sm">
             {project.industry}
           </div>
-          <div className="absolute right-3 top-3 rounded-lg bg-[var(--badge-overlay)] px-2.5 py-1 text-xs font-medium text-white backdrop-blur-sm">
+          <div className="absolute right-3 top-3 z-10 rounded-lg bg-[var(--badge-overlay)] px-2.5 py-1 text-xs font-medium text-white backdrop-blur-sm">
             {isVideoProject
               ? `${videoCount} video${videoCount === 1 ? "" : "s"}`
               : project.mediaCount}

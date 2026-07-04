@@ -1,11 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowRight, Calendar } from "lucide-react";
+import { Calendar, ArrowRight } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 import { Button } from "@/components/ui/Button";
 import { AnimatedCounter } from "@/components/ui/AnimatedCounter";
+import { OptimizedImage } from "@/components/ui/OptimizedImage";
 
 export function Hero() {
   const stats = [
@@ -59,11 +59,11 @@ export function Hero() {
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-accent/30 to-indigo-600/20 blur-2xl" />
               <div className="glass-strong relative overflow-hidden rounded-3xl glow-blue">
                 <div className="relative aspect-square">
-                  <Image
+                  <OptimizedImage
+                    variant="hero"
                     src={siteConfig.heroImage}
                     alt={`${siteConfig.name} — ${siteConfig.title}`}
                     fill
-                    priority
                     sizes="(max-width: 768px) 100vw, 50vw"
                     className="object-cover object-top"
                   />

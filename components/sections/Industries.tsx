@@ -11,8 +11,9 @@ export function Industries() {
         <SectionHeader
           label="Industries"
           title="Industries I Serve"
-          description="Experience across diverse sectors — each with tailored automation and marketing strategies."
+          description="Experience across diverse sectors tailored automation and marketing strategies."
           align="center"
+          descriptionClassName="max-w-none"
         />
 
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-3">

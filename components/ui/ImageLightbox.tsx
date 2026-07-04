@@ -182,6 +182,9 @@ export function ImageLightbox({
             src={image}
             alt={`${title} ${activeIndex + 1}`}
             draggable={false}
+            loading="eager"
+            decoding="async"
+            fetchPriority="high"
             className="max-h-[calc(100vh-8rem)] w-auto max-w-full rounded-lg object-contain transition-transform duration-200 ease-out"
             style={{ transform: `scale(${zoom})`, transformOrigin: "center center" }}
           />
@@ -227,6 +230,9 @@ export function ImageLightbox({
                 <img
                   src={src}
                   alt=""
+                  loading="lazy"
+                  decoding="async"
+                  fetchPriority="low"
                   className="h-full w-full object-cover object-top"
                 />
               </button>

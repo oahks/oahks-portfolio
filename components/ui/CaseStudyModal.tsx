@@ -1,12 +1,12 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, ZoomIn } from "lucide-react";
 import type { Project } from "@/lib/data/projects";
 import { ProjectVideoPlayer } from "@/components/ui/ProjectVideoPlayer";
 import { ImageLightbox } from "@/components/ui/ImageLightbox";
+import { LazyInViewImage } from "@/components/ui/OptimizedImage";
 import { cn } from "@/lib/utils";
 
 type CaseStudyModalProps = {
@@ -145,11 +145,14 @@ export function CaseStudyModal({ project, onClose }: CaseStudyModalProps) {
                           : "border-border hover:border-accent/40 hover:ring-2 hover:ring-accent/20"
                       )}
                     >
-                      <Image
+                      <LazyInViewImage
+                        variant="gallery"
                         src={src}
                         alt={`${project.title} screenshot ${i + 1}`}
                         fill
                         sizes="(max-width: 768px) 50vw, 200px"
+                        containerClassName="absolute inset-0"
+                        rootMargin="80px"
                         className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
                       />
                       <div className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all group-hover:bg-black/30 group-hover:opacity-100">
