@@ -11,6 +11,8 @@ export const siteConfig = {
   phone: "+234 814 374 8235",
   whatsapp: "https://wa.me/2348143748235",
   calendly: "https://calendly.com/aemmanuel0002/30min",
+  contactFormEndpoint:
+    "https://www.fastsubmit.cloud/api/submit/nXGBU1nTxesDjhikVjfZ",
   location: "Remote",
   heroImage: "/hero-image.jpg",
   testimonialVideo: {

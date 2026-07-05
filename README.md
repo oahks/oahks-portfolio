@@ -14,7 +14,7 @@ Built with a dark SaaS-inspired design, glassmorphism effects, scroll animations
 - **Process** — Four-step workflow timeline
 - **Industries** — Industries served grid
 - **Testimonials** — Auto-advancing carousel + video modal
-- **Contact** — Calendly embed, direct contact info, social links (form ready to wire up)
+- **Contact** — Lead form, Calendly embed, direct contact info, social links
 - **Light & dark mode** — Theme toggle in the navbar (persists via localStorage)
 - **Sticky glass navigation** with solid mobile menu panel
 - **Floating WhatsApp button**
@@ -80,7 +80,7 @@ Add assets under `public/` (e.g. `buyers/`, `investors/`, `mml/`, `chatbot/`, `s
 
 ### Contact form
 
-The form is commented out in [`components/sections/Contact.tsx`](components/sections/Contact.tsx). Uncomment and wire it to [Formspree](https://formspree.io), a GoHighLevel form embed, or your own API when ready.
+The form submits to FastSubmit via `contactFormEndpoint` in `lib/site-config.ts`.
 
 ### Calendly
 
